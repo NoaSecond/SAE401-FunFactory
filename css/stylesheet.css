@@ -1,0 +1,77 @@
+/*-----COLORS-----*/
+:root {
+    --Deep-Lemon: #F7CA1E;
+    --Beer: #F28C0F;
+    --Orange-Soda: #F25835;
+    --Shadow: #00000080;
+}
+
+/*-----SCROLLBAR-----*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px transparent;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--Deep-Lemon);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--Beer);
+}
+
+/*-----PAGE-----*/
+html {
+    overflow-x: hidden;
+    background-color: white;
+    color: black;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: white;
+    margin: 0px;
+}
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+}
+button {
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 35px;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: ease-in-out 0.25s;
+}
+button:hover {
+    box-shadow: inset 0px 0px 4px 0px var(--Shadow);
+}
+
+/*-----HEADER-----*/
+header {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 4px var(--Deep-Lemon);
+    box-shadow: 0px 0px 4px 0px var(--Shadow);
+}
+header>a {
+    left: 20px;
+    position: absolute;
+}
+#logo {
+    width: 60px;
+}
+button#headerBtn {
+    position: absolute;
+    right: 50px;
+}
+
+/*-----FOOTER-----*/
