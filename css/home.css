@@ -1,0 +1,26 @@
+div#contentWrap {
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px var(--Shadow);
+    border-radius: 35px;
+    padding: 20px;
+}
+form>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+div#posteWrap {
+    display: flex;
+    flex-direction: column;
+}
+div#posteWrap>div {
+    display: flex;
+}
+div#firstnameWrap {
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
+div#lastnameWrap {
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
