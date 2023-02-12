@@ -78,7 +78,7 @@ input[type=text]:focus-visible, input[type=password]:focus-visible {
     appearance: none;
     outline: inherit;
 }
-input[type=radio] {    
+input[type=checkbox] {    
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
@@ -93,7 +93,7 @@ input[type=radio] {
     display: grid;
     place-content: center;
 }
-input[type="radio"]::before {
+input[type=checkbox]::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
@@ -102,7 +102,7 @@ input[type="radio"]::before {
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em var(--Deep-Lemon);
 }
-input[type="radio"]:checked::before {
+input[type=checkbox]:checked::before {
     transform: scale(1);
 }
 input[type=submit] {
