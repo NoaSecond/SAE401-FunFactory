@@ -4,8 +4,8 @@
     <!--Primary Meta Tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunFactory | Annuaire</title>
-    <meta name="title" content="FunFactory | Annuaire">
+    <title>FunFactory | Connexion</title>
+    <meta name="title" content="FunFactory | Connexion">
     <meta name="description" content="FunFactory - Développement de jeux vidéos">
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-touch-icon.png">
@@ -19,54 +19,28 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/responsive/responsive-stylesheet.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/responsive/responsive-home.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/responsive/responsive-login.css">
 </head>
 <body>
     <header>
         <a href="./index.html">
             <img id="logo" src="./assets/img/branding/FunFactory(Alpha).png" alt="logo">
         </a>
-        <h1>Annuaire</h1>
-        <button id="headerBtn" onclick="window.location.href='./login.html';">Connexion</button>
+        <h1>Connexion</h1>
     </header>
     <main>
         <div id="contentWrap">
             <form>
-                <div>
-                    <div id="firstnameWrap">
-                        <h2>Prénom :</h2>   
-                        <input type="text" placeholder="Ex : John" name="firstname" id="firstname">
-                    </div>
-                    <div id="lastnameWrap">
-                        <h2>Nom :</h2>   
-                        <input type="text" placeholder="Ex : Mimosa" name="lastname" id="lastname">
-                    </div>
+                <div id="identifierWrap">
+                    <h2>Identifiant :</h2>   
+                    <input type="text" placeholder="Ex : jo45hn87" name="identifier" id="identifier">
                 </div>
-                <div>
-                    <div id="posteWrap"> 
-                        <h2>Poste :</h2>           
-                        <div>
-                            <label for="ceo">CEO</label>
-                            <input type="radio" name="ceo" id="ceo"/>
-                        </div>    
-                        <div>
-                            <label for="director">Directeur</label>
-                            <input type="radio" name="director" id="director"/>
-                        </div>
-                        <div>
-                            <label for="chief">Chef</label>
-                            <input type="radio" name="chief" id="chief"/>
-                        </div>
-                        <div>
-                            <label for="employee">Employé</label>
-                            <input type="radio" name="employee" id="employee" checked/>        
-                        </div>
-                    </div>
-                    <div>                        
-                        <input type="submit" value="Rechercher"/>
-                    </div>
-                </div>
+                <div id="passwordWrap">
+                    <h2>Mot de passe :</h2>   
+                    <input type="password" placeholder="******" name="password" id="password">
+                </div>                      
+                <input type="submit" value="Connexion"/>
             </form>
         </div>
     </main>

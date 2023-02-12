@@ -2,7 +2,7 @@ div#contentWrap {
     background-color: white;
     box-shadow: 0px 0px 4px 0px var(--Shadow);
     border-radius: 35px;
-    padding: 20px;
+    padding: 40px;
 }
 form>div {
     display: flex;
@@ -17,10 +17,10 @@ div#posteWrap>div {
     display: flex;
 }
 div#firstnameWrap {
-    margin-right: 10px;
+    margin-right: 20px;
     margin-bottom: 50px;
 }
 div#lastnameWrap {
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 50px;
 }

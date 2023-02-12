@@ -58,7 +58,7 @@ label {
     font-weight: 300;
     font-size: 14px;
 }
-input[type=text] {
+input[type=text], input[type=password] {
     width: 200px;
     height: 35px;
     padding: 0px 15px;
@@ -70,6 +70,13 @@ input[type=text] {
     font-weight: 200;
     font-size: 14px;
     transition: ease-in-out 0.25s;
+}
+input[type=text]:focus, input[type=password]:focus {
+    box-shadow: inset 0px 0px 4px 0px var(--Shadow);
+}
+input[type=text]:focus-visible, input[type=password]:focus-visible {
+    appearance: none;
+    outline: inherit;
 }
 input[type=radio] {    
     -webkit-appearance: none;
@@ -170,9 +177,13 @@ footer a {
     font-size: 10px;
     text-decoration: none;
     color: black;
+    transition: ease-in-out 0.25s;
 }
 footer a:-webkit-any-link {
     border-bottom: solid 1px var(--Beer);
+}
+footer a:-webkit-any-link:hover {
+    color: var(--Beer);
 }
 footer>div:first-of-type {
     width: 520px;
