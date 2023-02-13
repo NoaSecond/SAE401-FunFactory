@@ -1,0 +1,24 @@
+@media only screen and (max-width: 640px) { 
+    div#contentWrap {
+        margin: 40px 0px;
+    }    
+    form>div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    div#firstnameWrap {
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    div#lastnameWrap {
+        margin-left: 0px;
+        margin-bottom: 30px;
+    }
+    div#posteWrap {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        margin-bottom: 30px;
+    }
+}

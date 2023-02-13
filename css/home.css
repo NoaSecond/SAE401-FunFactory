@@ -14,7 +14,14 @@ div#posteWrap {
     flex-direction: column;
 }
 div#posteWrap>div {
+    padding: 5px;
+    border-radius: 35px;
     display: flex;
+    align-items: center;
+    transition: ease-in-out 0.25s;
+}
+div#posteWrap>div:hover {
+    box-shadow: inset 0px 0px 4px 0px var(--Shadow);
 }
 div#firstnameWrap {
     margin-right: 20px;
