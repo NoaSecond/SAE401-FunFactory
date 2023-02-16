@@ -147,6 +147,15 @@ header>a {
     left: 20px;
     position: absolute;
 }
+#logoWrap {
+    font-family: none;
+    font-weight: none;
+    font-size: none;
+    text-decoration: none;
+    color: none;
+    transition: none;
+    border: none;
+}
 #logo {
     width: 60px;
 }
