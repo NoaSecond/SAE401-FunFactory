@@ -23,6 +23,9 @@ td {
     text-decoration: none;
     color: black;
 }
+td:not(:last-child) {
+    padding-right: 35px;
+}
 tr>td:first-child {
     transition: ease-in-out 0.25s;
     cursor: pointer;
