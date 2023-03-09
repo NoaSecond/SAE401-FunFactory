@@ -6,14 +6,27 @@ table {
     padding: 20px;
 }
 th {
+    text-align: left;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 18px;
     margin: 0px;
 }
-td {
+th:not(:last-child) {
+    padding-right: 35px;
+}
+td {    
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 14px;
     margin: 0px;
+    text-decoration: none;
+    color: black;
+}
+tr>td:first-child {
+    transition: ease-in-out 0.25s;
+    cursor: pointer;
+}
+tr>td:first-child:hover {
+    color: var(--Beer);
 }
