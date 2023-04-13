@@ -80,10 +80,7 @@ require_once 'employee.php';
                         && (($emp->getWorkplace() == $ceo || $emp->getWorkplace() == $director || $emp->getWorkplace() == $chief || $emp->getWorkplace() == $employee)
                             || ($ceo == null && $director == null && $chief == null && $employee == null))
                     ) {
-                        $onclick = './profil.html';
-                        $onclick2 = "window.location=" . $onclick . ";";
-                        $onclick3 = "<tr onclick='" . $onclick . "'>";
-                        echo "<tr <a href='./profil.html'>>";
+                        echo '<tr onclick="window.location=\'./profil.html\';">';
                         echo "<td>" . $emp->getName() . "</td>\n";
                         echo "<td>" . $emp->getLastName() . "</td>\n";
                         echo "<td>" . $emp->getMail() . "</td>\n";
