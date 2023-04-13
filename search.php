@@ -39,7 +39,7 @@ require_once 'employee.php';
     <main>
         <?php
         // Create a new Employee object
-        require_once "test.php";
+        require_once "registerEmployee.php";
         ?>
         <table>
             <thead>
