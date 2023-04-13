@@ -3,6 +3,7 @@
 
 <?php
 require_once 'employee.php';
+require_once "registerEmployee.php";
 ?>
 
 <head>
@@ -34,19 +35,14 @@ require_once 'employee.php';
             <img id="logo" src="./assets/img/branding/FunFactory(Alpha).png" alt="logo">
         </a>
         <h1>Recherche</h1>
-        <button id="headerBtn" onclick="window.location.href='./login.html';">Connexion</button>
+        <button id="headerBtn" onclick="window.location.href='./login.php';">Connexion</button>
     </header>
     <main>
-        <?php
-        // Create a new Employee object
-        require_once "registerEmployee.php";
-        ?>
         <table>
             <thead>
                 <tr>
                     <th>Prénom</th>
                     <th>Nom</th>
-                    <th>Courriel</th>
                     <th>Poste</th>
                     <th>Département</th>
                 </tr>
@@ -56,22 +52,22 @@ require_once 'employee.php';
                 $firstname = $_POST["firstname"];
                 $lastname = $_POST["lastname"];
                 if (isset($_POST["ceo"])) {
-                    $ceo = "ceo";
+                    $ceo = "PDG";
                 } else {
                     $ceo = null;
                 }
                 if (isset($_POST["director"])) {
-                    $director = "director";
+                    $director = "Managers";
                 } else {
                     $director = null;
                 }
                 if (isset($_POST["chief"])) {
-                    $chief = "chief";
+                    $chief = "Cadres";
                 } else {
                     $chief = null;
                 }
                 if (isset($_POST["employee"])) {
-                    $employee = "employee";
+                    $employee = "Employe";
                 } else {
                     $employee = null;
                 }
@@ -83,7 +79,6 @@ require_once 'employee.php';
                         echo '<tr onclick="window.location=\'./profil.html\';">';
                         echo "<td>" . $emp->getName() . "</td>\n";
                         echo "<td>" . $emp->getLastName() . "</td>\n";
-                        echo "<td>" . $emp->getMail() . "</td>\n";
                         echo "<td>" . $emp->getWorkplace() . "</td>\n";
                         echo "<td>" . $emp->getDepartment() . "</td>\n";
                         echo "</tr>\n";
