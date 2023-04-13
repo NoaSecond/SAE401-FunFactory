@@ -64,7 +64,7 @@ if (ldap_bind($con, $ldap_dn, $passeadmin)) {
             }
         }
 
-        $employees[$i] =  new Employee($i, $prenom, $nom, $mail, $password, $login, $phonePro, $phonePerso, $address, $dnRole, $departement, $admin);
+        $employees[$i - 2] =  new Employee($i, $prenom, $nom, $mail, $password, $login, $phonePro, $phonePerso, $address, $dnRole, $departement, $admin);
     }
 } else {
     echo "Invalid user";
