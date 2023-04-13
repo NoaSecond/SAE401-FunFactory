@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
+<?php
+require_once 'employee.php';
+?>
+
 <head>
     <!--Primary Meta Tags-->
     <meta charset="UTF-8">
@@ -22,6 +27,7 @@
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/responsive/responsive-search.css">
 </head>
+
 <body>
     <header>
         <a href="./index.html" id="logoWrap">
@@ -31,6 +37,10 @@
         <button id="headerBtn" onclick="window.location.href='./login.html';">Connexion</button>
     </header>
     <main>
+        <?php
+        // Create a new Employee object
+        require_once "test.php";
+        ?>
         <table>
             <thead>
                 <tr>
@@ -42,27 +52,47 @@
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="window.location='./profil.html';">
-                    <td>John</td>
-                    <td>Mimosa</td>
-                    <td>john.mimosa@funfactory.com</td>
-                    <td>Employé</td>
-                    <td>Production</td>
-                </tr onclick="window.location='./profil.html';">
-                <tr>
-                    <td>John</td>
-                    <td>Mimosa</td>
-                    <td>john.mimosa@funfactory.com</td>
-                    <td>Employé</td>
-                    <td>Production</td>
-                </tr>
-                <tr onclick="window.location='./profil.html';">
-                    <td>John</td>
-                    <td>Mimosa</td>
-                    <td>john.mimosa@funfactory.com</td>
-                    <td>Employé</td>
-                    <td>Production</td>
-                </tr>
+                <?php
+                $firstname = $_POST["firstname"];
+                $lastname = $_POST["lastname"];
+                if (isset($_POST["ceo"])) {
+                    $ceo = "ceo";
+                } else {
+                    $ceo = null;
+                }
+                if (isset($_POST["director"])) {
+                    $director = "director";
+                } else {
+                    $director = null;
+                }
+                if (isset($_POST["chief"])) {
+                    $chief = "chief";
+                } else {
+                    $chief = null;
+                }
+                if (isset($_POST["employee"])) {
+                    $employee = "employee";
+                } else {
+                    $employee = null;
+                }
+                foreach ($employees as $emp) {
+                    if (($firstname == null || $emp->getName() == $firstname) && ($lastname == null || $emp->getLastName() == $lastname)
+                        && (($emp->getWorkplace() == $ceo || $emp->getWorkplace() == $director || $emp->getWorkplace() == $chief || $emp->getWorkplace() == $employee)
+                            || ($ceo == null && $director == null && $chief == null && $employee == null))
+                    ) {
+                        $onclick = './profil.html';
+                        $onclick2 = "window.location=" . $onclick . ";";
+                        $onclick3 = "<tr onclick='" . $onclick . "'>";
+                        echo "<tr <a href='./profil.html'>>";
+                        echo "<td>" . $emp->getName() . "</td>\n";
+                        echo "<td>" . $emp->getLastName() . "</td>\n";
+                        echo "<td>" . $emp->getMail() . "</td>\n";
+                        echo "<td>" . $emp->getWorkplace() . "</td>\n";
+                        echo "<td>" . $emp->getDepartment() . "</td>\n";
+                        echo "</tr>\n";
+                    }
+                }
+                ?>
             </tbody>
         </table>
     </main>
@@ -78,9 +108,9 @@
         <div>
             <div>
                 <h2>Liens :</h2>
-                <a href="./assets/Document d'aide.pdf" target="_blank">aide à la recherche</a>
-                <a href="./sitemap.xml">mentions légales</a>
-                <a href="./sitemap.xml" target="_blank">plan du site</a>
+                <a href="./help.html">aide à la recherche</a>
+                <a href="./legal.html">mentions légales</a>
+                <a href="./sitemap.xml">plan du site</a>
             </div>
             <div>
                 <h2>Contact :</h2>
@@ -90,4 +120,5 @@
         </div>
     </footer>
 </body>
+
 </html>
