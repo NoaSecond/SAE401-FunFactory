@@ -39,14 +39,8 @@ require_once 'employee.php';
     <main>
         <?php
         // Create a new Employee object
-        $employees = array(
-            new Employee(1, 'John', 'Doe', 'johndoe@example.com', 'password', 'dj102535', '555-1234', '555-5678', '123 Main St', 'ceo', 'Marketing', 'a'),
-            new Employee(2, 'Jane', 'Doe', 'janedoe@example.com', 'password', 'dj156535', '555-2345', '555-6789', '456 Elm St', 'director', 'Sales', 'a'),
-            new Employee(3, 'Bob', 'Smith', 'bobsmith@example.com', 'password', 'sb598473', '555-3456', '555-7890', '789 Oak St', 'chief', 'Human Resources', 'a'),
-            new Employee(4, 'Alice', 'Johnson', 'alicejohnson@example.com', 'password', 'ja458961', '555-4567', '555-8901', '321 Pine St', 'employee', 'Finance', 'a'),
-            new Employee(5, 'Tom', 'Williams', 'tomwilliams@example.com', 'password', 'wt487512', '555-5678', '555-9012', '654 Cedar St', 'ceo', 'Engineering', 'a'),
-            new Employee(6, 'John', 'Doa', 'johndoe@example.com', 'password', 'dj102535', '555-1234', '555-5678', '123 Main St', 'director', 'Marketing', 'a')
-        );        ?>
+        require_once "test.php";
+        ?>
         <table>
             <thead>
                 <tr>
