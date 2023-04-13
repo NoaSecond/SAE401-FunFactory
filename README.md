@@ -1,6 +1,6 @@
 <div style="display: flex;">
     <h1>SAE401-FunFactory</h1>
-    <img src="https://skillicons.dev/icons?i=html,css" id="skills" style="margin-left: 20px;">
+    <img src="https://skillicons.dev/icons?i=html,css,php" id="skills" style="margin-left: 20px;">
 </div>
 
 ## Description :
