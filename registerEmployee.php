@@ -10,11 +10,9 @@ $con = ldap_connect("ldap://" . $serveur_ad_ip . ":" . $serveur_ad_port);
 ldap_set_option($con, LDAP_OPT_PROTOCOL_VERSION, 3);
 #$ldap_con = ldap_connect("ldap.forumsys.com");
 
-global $employees;
+$employees = [];
 
 if (ldap_bind($con, $ldap_dn, $passeadmin)) {
-    echo "Bind successful";
-
     $filter = "primaryGroupId=" . 513;
     $result = ldap_search($con, "dc=FUNFACTORY,dc=local", $filter);
     if (!$result) {
@@ -51,17 +49,19 @@ if (ldap_bind($con, $ldap_dn, $passeadmin)) {
             }
         }
 
-        // TODO
-        try {
-            $admin = $entries[$i]["memberof"]["0"];
-            $admin_array = explode(',', $admin);
-            $adminGroup = substr($admin_array[0], 3);
+        $adm = false;
+        if (isset($entries[$i]["memberof"])) {
+            try {
+                $admin = $entries[$i]["memberof"]["0"];
+                $admin_array = explode(',', $admin);
+                $adminGroup = substr($admin_array[0], 3);
 
-            $adm = false;
-            if ($adminGroup == "Grp_AdmAD") {
-                $adm = true;
+                if ($adminGroup == "Grp_AdmAD") {
+                    $adm = true;
+                }
+            } catch (Exception $e) {
+                // Gérer l'exception ici, si nécessaire
             }
-        } catch (Exception $e) {
         }
 
         $employees[$i] =  new Employee($i, $prenom, $nom, $mail, $password, $login, $phonePro, $phonePerso, $address, $dnRole, $departement, $admin);
