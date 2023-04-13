@@ -21,6 +21,23 @@
     <link rel="stylesheet" href="css/responsive/responsive-stylesheet.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/responsive/responsive-login.css">
+    <?php
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            require_once 'employee.php';
+            require_once 'registerEmployee.php';
+
+            if(isset($_POST['password'])){
+                for($i = 0; $i<count($employees); $i++){
+                    if($_POST['identifier'] == $employees[$i]->getLogin() && $_POST['password'] == $employees[$i]->getPassword() ){
+                        $_SESSION['login']=$_POST['identifier'];
+                        $_SESSION['password']=$_POST['password'];
+                    }    
+                }
+            }
+        ?>
 </head>
 <body>
     <header>
@@ -31,7 +48,7 @@
     </header>
     <main>
         <div id="contentWrap">
-            <form>
+            <form action="./index.html" method="post">
                 <div id="identifierWrap">
                     <h2>Identifiant :</h2>   
                     <input type="text" placeholder="Ex : jo45hn87" name="identifier" id="identifier">
@@ -56,9 +73,9 @@
         <div>
             <div>
                 <h2>Liens :</h2>
-                <a href="./assets/Document d'aide.pdf" target="_blank">aide à la recherche</a>
-                <a href="./sitemap.xml">mentions légales</a>
-                <a href="./sitemap.xml" target="_blank">plan du site</a>
+                <a href="./help.html">aide à la recherche</a>
+                <a href="./legal.html">mentions légales</a>
+                <a href="./sitemap.xml">plan du site</a>
             </div>
             <div>
                 <h2>Contact :</h2>
