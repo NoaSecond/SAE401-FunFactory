@@ -25,8 +25,8 @@ if (ldap_bind($con, $ldap_dn, $passeadmin)) {
         $nom = $entries[$i]["cn"]["0"];
         $mail = $entries[$i]["mail"]["0"];
         $login = $entries[$i]["samaccountname"]["0"];
-        $phonePro = $entries[$i]["telephonenumber"]["0"];
-        $phonePerso = $entries[$i]["homephone"]["0"];
+        $phonePro = 0 . $entries[$i]["telephonenumber"]["0"];
+        $phonePerso = 0 . $entries[$i]["homephone"]["0"];
         $password = $login . "@2023";
         $address = $entries[$i]["streetaddress"]["0"];
         $dn = $entries[$i]["dn"];
@@ -63,9 +63,47 @@ if (ldap_bind($con, $ldap_dn, $passeadmin)) {
                 // Gérer l'exception ici, si nécessaire
             }
         }
-
         $employees[$i - 2] =  new Employee($i, $prenom, $nom, $mail, $password, $login, $phonePro, $phonePerso, $address, $dnRole, $departement, $admin);
+    }
+    ldap_unbind($con);
+
+    $pdg = $employees[0];
+    $mMF = $employees[1];
+    $mP = $employees[2];
+    $mRH = $employees[3];
+    $mDA = $employees[4];
+    $mC = $employees[5];
+    $cM = $employees[6];
+    $cF = $employees[7];
+    for ($i = 0; $i < count($employees); $i++) {
+        $superior = $pdg;
+        $wp = $employees[$i]->getWorkplace();
+        $dp = $employees[$i]->getDepartment();
+        if ($wp == "Managers") {
+            $superior = $pdg;
+        } else if ($wp == "Cadres") {
+            if ($departement == "PromoEtCom" || $departement == "Gestion") {
+                $superior = $mMF;
+            }
+        } else if ($wp == "Employe") {
+            if ($dp == "PromoEtCom") {
+                $superior = $cM;
+            } else if ($dp == "Gestion") {
+                $superior = $cF;
+            } else if ($dp == "RH") {
+                $superior = $mRH;
+            } else if ($dp == "Production") {
+                $superior = $mP;
+            } else if ($dp == "Conception") {
+                $superior = $mC;
+            } else if ($dp == "Artistique") {
+                $superior = $mDA;
+            }
+        }
+        $employees[$i]->setSuperior($superior);
     }
 } else {
     echo "Invalid user";
 }
+
+$_SESSION['employees'] = $employees;

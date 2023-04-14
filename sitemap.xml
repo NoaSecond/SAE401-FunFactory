@@ -5,27 +5,22 @@
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>http://funfactory.com/login.html</loc>
+        <loc>http://funfactory.com/login.php</loc>
         <lastmod>2022-12-03T15:53:32+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://funfactory.com/profil.html</loc>
+        <loc>http://funfactory.com/profil.php</loc>
         <lastmod>2022-12-03T15:53:32+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://funfactory.com/search.html</loc>
+        <loc>http://funfactory.com/search.php</loc>
         <lastmod>2022-12-03T15:53:32+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://funfactory.com/help.html</loc>
-        <lastmod>2022-12-03T15:53:32+00:00</lastmod>
-        <priority>0.50</priority>
-    </url>
-    <url>
-        <loc>http://funfactory.com/legal.html</loc>
+        <loc>http://funfactory.com/legal.php</loc>
         <lastmod>2022-12-03T15:53:32+00:00</lastmod>
         <priority>0.50</priority>
     </url>

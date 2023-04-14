@@ -14,6 +14,7 @@ class Employee
   public $workplace;
   public $department;
   public $admin;
+  public $superior;
 
   // Constructor
   public function __construct($id, $name, $lastName, $mail, $password, $login, $phonePro, $phonePerso, $address, $workplace, $department, $admin)
@@ -88,6 +89,17 @@ class Employee
     return $this->department;
   }
 
+  public function getAdmin()
+  {
+    return $this->admin;
+  }
+
+  public function getSuperior()
+  {
+    return $this->superior;
+  }
+
+
   // Setter methods
   public function setId($id)
   {
@@ -142,5 +154,10 @@ class Employee
   public function setDepartment($department)
   {
     $this->department = $department;
+  }
+
+  public function setSuperior($superior)
+  {
+    $this->superior = $superior;
   }
 }

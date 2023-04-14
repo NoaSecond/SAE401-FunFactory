@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once 'employee.php';
-require_once 'registerEmployee.php';
 ?>
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <!--Primary Meta Tags-->
@@ -28,8 +25,8 @@ require_once 'registerEmployee.php';
     <!--CSS-->
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/responsive/responsive-stylesheet.css">
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/responsive/responsive-search.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/responsive/responsive-home.css">
 </head>
 
 <body>
@@ -37,9 +34,8 @@ require_once 'registerEmployee.php';
         <a href="./index.php" id="logoWrap">
             <img id="logo" src="./assets/img/branding/FunFactory(Alpha).png" alt="logo">
         </a>
-        <h1>Recherche</h1>
+        <h1>Annuaire</h1>
         <?php
-
         if (isset($_SESSION['loggedin'])) {
             print($_SESSION["loggedin"]);
             if ($_SESSION['loggedin'] == 0)
@@ -50,68 +46,48 @@ require_once 'registerEmployee.php';
         ?>
     </header>
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Poste</th>
-                    <th>Département</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $firstname = $_POST["firstname"];
-                $lastname = $_POST["lastname"];
-                if (isset($_POST["ceo"])) {
-                    $ceo = "PDG";
-                } else {
-                    $ceo = null;
-                }
-                if (isset($_POST["director"])) {
-                    $director = "Managers";
-                } else {
-                    $director = null;
-                }
-                if (isset($_POST["chief"])) {
-                    $chief = "Cadres";
-                } else {
-                    $chief = null;
-                }
-                if (isset($_POST["employee"])) {
-                    $employee = "Employe";
-                } else {
-                    $employee = null;
-                }
-                foreach ($employees as $emp) {
-                    $f = false;
-                    if (substr($emp->getName(), 0, strlen($firstname)) === $firstname) {
-                        $f = true;
-                    }
-
-                    $l = false;
-                    if (substr($emp->getLastName(), 0, strlen($lastname)) === $lastname) {
-                        $l = true;
-                    }
-
-                    if (($firstname == null || $f) && ($lastname == null || $l)
-                        && (($emp->getWorkplace() == $ceo || $emp->getWorkplace() == $director || $emp->getWorkplace() == $chief || $emp->getWorkplace() == $employee)
-                            || ($ceo == null && $director == null && $chief == null && $employee == null))
-                    ) {
-                        $c1 = '<tr onclick="window.location=\'./profil.php?id=';
-                        $c2 = $emp->getId();
-                        $c3 = "'\">";
-                        echo $c1 . $c2 . $c3;
-                        echo "<td>" . $emp->getName() . "</td>\n";
-                        echo "<td>" . $emp->getLastName() . "</td>\n";
-                        echo "<td>" . $emp->getWorkplace() . "</td>\n";
-                        echo "<td>" . $emp->getDepartment() . "</td>\n";
-                        echo "</tr>\n";
-                    }
-                }
-                ?>
-            </tbody>
-        </table>
+        <div id="contentWrap">
+            <form method="post" action="./search.php">
+                <div>
+                    <div id="firstnameWrap">
+                        <h2>Prénom :</h2>
+                        <input type="text" placeholder="Ex : John" name="firstname" id="firstname">
+                    </div>
+                    <div id="lastnameWrap">
+                        <h2>Nom :</h2>
+                        <input type="text" placeholder="Ex : Mimosa" name="lastname" id="lastname">
+                    </div>
+                </div>
+                <div>
+                    <div id="posteWrap">
+                        <h2>Poste :</h2>
+                        <div>
+                            <input type="checkbox" name="ceo" id="ceo" />
+                            <pre>&nbsp;&nbsp;</pre>
+                            <label for="ceo">PDG</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="director" id="director" />
+                            <pre>&nbsp;&nbsp;</pre>
+                            <label for="director">Manager</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="chief" id="chief" />
+                            <pre>&nbsp;&nbsp;</pre>
+                            <label for="chief">Cadre</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="employee" id="employee" />
+                            <pre>&nbsp;&nbsp;</pre>
+                            <label for="employee">Employé</label>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Rechercher" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
         <div>

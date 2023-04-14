@@ -5,8 +5,8 @@
     <!--Primary Meta Tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunFactory | Connexion</title>
-    <meta name="title" content="FunFactory | Connexion">
+    <title>FunFactory | Mentions légales</title>
+    <meta name="title" content="FunFactory | Mentions légales">
     <meta name="description" content="FunFactory - Développement de jeux vidéos">
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-touch-icon.png">
@@ -20,16 +20,6 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/responsive/responsive-stylesheet.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/responsive/responsive-login.css">
-    <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    require_once 'employee.php';
-    require_once 'registerEmployee.php';
-    ?>
 </head>
 
 <body>
@@ -37,35 +27,21 @@
         <a href="./index.php" id="logoWrap">
             <img id="logo" src="./assets/img/branding/FunFactory(Alpha).png" alt="logo">
         </a>
-        <h1>Connexion</h1>
+        <h1>Mentions légales</h1>
+        <?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (isset($_SESSION['loggedin'])) {
+            if ($_SESSION['loggedin'] == 0)
+                echo '<button id="headerBtn" onclick="window.location.href=\'./login.php\';">Connexion</button>';
+            else
+                echo '<button id="headerBtn" onclick="window.location.href=\'./deconnexion.php\';">Deconnexion</button>';
+        } else echo '<button id="headerBtn" onclick="window.location.href=\'./login.php\';">Connexion</button>';
+        ?>
     </header>
     <main>
-        <div id="contentWrap">
-            <form method="post">
-                <div id="identifierWrap">
-                    <h2>Identifiant :</h2>
-                    <input type="text" placeholder="Ex : jo45hn87" name="identifier" id="identifier">
-                </div>
-                <div id="passwordWrap">
-                    <h2>Mot de passe :</h2>
-                    <input type="password" placeholder="******" name="password" id="password">
-                </div>
-                <input type="submit" value="Connexion" />
-                <?php
-                if (isset($_POST['password'])) {
-                    for ($i = 0; $i < count($employees); $i++) {
-                        if ($_POST['identifier'] == $employees[$i]->getLogin() && $_POST['password'] == $employees[$i]->getPassword()) {
-                            $_SESSION['login'] = $_POST['identifier'];
-                            $_SESSION['password'] = $_POST['password'];
-                            $_SESSION['loggedin'] = 1;
-                            header("Location: index.php");
-                            exit();
-                        }
-                    }
-                }
-                ?>
-            </form>
-        </div>
     </main>
     <footer>
         <div>
